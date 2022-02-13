@@ -151,49 +151,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const flipTile = () => {
-        const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
-        const guess = []
-        const animation_length = 500
-        let checkWord = word.toLowerCase()
+    const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
+    const guess = []
+    const animation_length = 500
+    let checkWord = word.toLowerCase()
 
-        // Make guesses grey by default
-        rowTiles.forEach((tile, idx) => {
-            guess.push({
-                letter: tile.getAttribute('data').toLowerCase(),
-                color: 'grey-overlay'
-            })
+    // Make guesses grey by default
+    rowTiles.forEach((tile, idx) => {
+        guess.push({
+            letter: tile.getAttribute('data').toLowerCase(),
+            color: 'grey-overlay'
         })
-
-        guess.forEach((g, idx) => {
-            if (g.letter == word[idx]) {
-                g.color = 'green-overlay'
-                checkWord = replaceByIndex(checkWord, idx, '*')
-            } else if (checkWord.includes(g.letter)) {
-                g.color = 'yellow-overlay'
-            }
-        })
-
-        // guess.forEach((g, idx) => {
-
-        // })
-
-        rowTiles.forEach((tile, idx) => {
-            const guessLetter = guess[idx]
-            setTimeout(() => {
-                tile.classList.add('flip')
-                tile.classList.add(guessLetter.color)
-                addColorToKey(guessLetter.letter.toUpperCase(), guessLetter.color)
-            }, animation_length * idx)
-        })
-
-
-    }
-
-    keys.forEach(k => {
-        const buttonElement = document.createElement('button')
-        buttonElement.textContent = k
-        buttonElement.setAttribute('id', k)
-        buttonElement.addEventListener('click', handleClick)
-        keyboard.append(buttonElement)
     })
+
+    guess.forEach((g, idx) => {
+        if (g.letter == word[idx]) {
+            g.color = 'green-overlay'
+            checkWord = replaceByIndex(checkWord, idx, '*')
+        } else if (checkWord.includes(g.letter)) {
+            g.color = 'yellow-overlay'
+        }
+    })
+
+    // guess.forEach((g, idx) => {
+
+    // })
+
+    rowTiles.forEach((tile, idx) => {
+        const guessLetter = guess[idx]
+        setTimeout(() => {
+            tile.classList.add('flip')
+            tile.classList.add(guessLetter.color)
+            addColorToKey(guessLetter.letter.toUpperCase(), guessLetter.color)
+        }, animation_length * idx)
+    })
+
+
+}
+
+keys.forEach(k => {
+    const buttonElement = document.createElement('button')
+    buttonElement.textContent = k
+    buttonElement.setAttribute('id', k)
+    buttonElement.addEventListener('click', handleClick)
+    keyboard.append(buttonElement)
+})
 })

@@ -130,3 +130,22 @@ BOOTSTRAP
     max-width: 700px;
   }
   
+
+.welcome-message-container {
+    height: 30px;
+    border: solid 2px red;
+}
+
+
+.prize-options-container {
+    width: 330px;
+    margin-bottom: 30px;
+    border: solid 2px green;
+}
+
+.welcome-footer-container {
+    width: 510px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px blue;
+}
