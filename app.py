@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return 'hello world! This is a new version'
+    return render_template('index.html')
